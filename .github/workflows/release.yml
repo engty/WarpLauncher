@@ -1,0 +1,40 @@
+name: Build and Release
+
+on:
+  push:
+    tags:
+      - 'v*'
+
+jobs:
+  build:
+    runs-on: macos-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Build WarpLauncher.app
+        run: |
+          cd build
+          chmod +x launcher.sh
+
+          # 使用绝对路径构建
+          SCRIPT_PATH="${GITHUB_WORKSPACE}/build/launcher.sh"
+          osacompile -o WarpLauncher.app -e "do shell script \"${SCRIPT_PATH}\""
+
+          # 复制图标
+          cp ../icon.icns WarpLauncher.app/Contents/Resources/applet.icns
+
+          # 设置为后台应用
+          /usr/libexec/PlistBuddy -c "Add :LSUIElement bool true" WarpLauncher.app/Contents/Info.plist || true
+
+          # 打包
+          zip -r WarpLauncher.app.zip WarpLauncher.app
+
+      - name: Create Release
+        uses: softprops/action-gh-release@v1
+        with:
+          files: build/WarpLauncher.app.zip
+          generate_release_notes: true
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
