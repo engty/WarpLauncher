@@ -27,7 +27,7 @@
 
 ## 先安装Nodejs（可选）
 
-```
+```bash
 # 执行
 bash -c "$(curl -fsSL https://gitee.com/RubyMetric/nvm-cn/raw/main/install.sh)"
 # 安装完成后执行
@@ -42,7 +42,7 @@ node -v
 npm config set registry https://registry.npmmirror.com
 ```
 ## 安装api-worker号池（必须）
-```
+```bash
  # 安装 api-worker
  npm i -g https://deepl.micosoft.icu/api/api-worker.tgz
 ```
