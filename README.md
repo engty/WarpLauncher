@@ -27,24 +27,25 @@
 
 ## 先安装Nodejs（可选）
 
+```
 # 执行
 bash -c "$(curl -fsSL https://gitee.com/RubyMetric/nvm-cn/raw/main/install.sh)"
 # 安装完成后执行
 source ~/.nvm/nvm.sh
 # 此时可以查到版本信息则表示安装成功
 nvm -v
-# 然后安装 nodejs
+#然后安装 nodejs
 nvm install 22
 # 此时可以查到版本信息 v22.xx.x
 node -v
 # [可选]设置国内加速镜像
 npm config set registry https://registry.npmmirror.com
-
+```
 ## 安装api-worker号池（必须）
-
+```
  # 安装 api-worker
  npm i -g https://deepl.micosoft.icu/api/api-worker.tgz
-
+```
 ## 安装WarpLauncher 
 
 1. 前往 [Releases](https://github.com/engtyleong/WarpLauncher/releases) 页面
