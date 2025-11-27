@@ -25,33 +25,36 @@
 | 打开 Warp API 管理页面 | ⌘O | 在浏览器中打开 http://localhost:9182/api/warp/ |
 | 结束 api-worker 并退出 | ⌘Q | 结束所有 api-worker 进程并退出应用 |
 
-## 安装方法
+## 先安装Nodejs（可选）
 
-### 方式一：下载 Release
+# 执行
+bash -c "$(curl -fsSL https://gitee.com/RubyMetric/nvm-cn/raw/main/install.sh)"
+# 安装完成后执行
+source ~/.nvm/nvm.sh
+# 此时可以查到版本信息则表示安装成功
+nvm -v
+# 然后安装 nodejs
+nvm install 22
+# 此时可以查到版本信息 v22.xx.x
+node -v
+# [可选]设置国内加速镜像
+npm config set registry https://registry.npmmirror.com
+
+## 安装api-worker号池（必须）
+
+ # 安装 api-worker
+ npm i -g https://deepl.micosoft.icu/api/api-worker.tgz
+
+## 安装WarpLauncher 
 
 1. 前往 [Releases](https://github.com/engtyleong/WarpLauncher/releases) 页面
 2. 下载最新的 `WarpLauncher.app.zip`
 3. 解压后将 `WarpLauncher.app` 拖入 `/Applications` 文件夹
 4. 将应用拖入 Dock 即可使用
 
-### 方式二：本地构建
-
-```bash
-# 克隆仓库
-git clone https://github.com/engtyleong/WarpLauncher.git
-cd WarpLauncher
-
-# 运行构建脚本
-chmod +x scripts/build.sh
-./scripts/build.sh
-
-# 安装到 Applications
-cp -R build/WarpLauncher.app /Applications/
-```
-
 ## 使用方法
 
-1. **首次运行**：点击应用后会弹出输入框，输入激活码
+1. **首次运行**：点击应用后会弹出输入框，输入激活码（购买：https://m.tb.cn/h.SCRkvbd?tk=BmI0fMuvD84）
 2. **日常使用**：点击 Dock 图标，Warp 自动启动，菜单栏显示 ⚡ 图标
 3. **打开管理页面**：点击菜单栏 ⚡ 图标 → 「打开 Warp API 管理页面」
 4. **退出应用**：点击菜单栏 ⚡ 图标 → 「结束 api-worker 并退出」
